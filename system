@@ -1,0 +1,43 @@
+==
+Common commands for "system" confirguration on Juniper JUNOS equipment
+==
+
+==
+SET commands
+==
+
+set system host-name <hostname>
+set system domain-name eunx.net
+set system domain-search eunx.net
+set system backup-router <ip-address>
+set system backup-router destination <ip-address>
+set system time-zone UTC
+set system no-redirects
+set system internet-options icmpv4-rate-limit packet-rate 200
+set system internet-options icmpv4-rate-limit bucket-size 5
+set system internet-options path-mtu-discovery
+set system internet-options tcp-drop-synfin-set
+set system name-server <dns-server-ip-address>
+
+==
+Applied configuration
+==
+
+system {
+    host-name rt5.lon37.uk;
+    domain-name eunx.net;
+    domain-search eunx.net;
+    backup-router <ip-address> destination <ip-address>;
+    time-zone UTC;
+    no-redirects;
+    saved-core-files 3;
+    saved-core-context;
+    internet-options {
+        icmpv4-rate-limit packet-rate 200 bucket-size 5;
+        path-mtu-discovery;
+        tcp-drop-synfin-set;
+    }
+    }
+    name-server {
+        <dns-server-ip-address>;
+    }
